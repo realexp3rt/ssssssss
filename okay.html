@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Request to Burp Collaborator</title>
+</head>
+<body>
+  <button onclick="sendRequest()">Send Request</button>
+  <div id="response"></div>
+
+  <script>
+    function sendRequest() {
+      const url = "https://lrgu5jefbrl0wcagc9g1apw3cuim6b.burpcollaborator.net";
+
+      const request = new XMLHttpRequest();
+      request.open("GET", url);
+      request.onload = function() {
+        if (request.status === 200) {
+          document.getElementById("response").innerHTML = request.responseText;
+        } else {
+          document.getElementById("response").innerHTML = "Error: " + request.statusText;
+        }
+      };
+      request.send();
+    }
+  </script>
+</body>
+</html>
